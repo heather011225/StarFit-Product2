@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>StarFit — 子瑜 機場穿搭・法式海軍風金釦船錨針織套裝</title>
-
   <style>
     :root{
       --accent:#6fa8ff; 
@@ -14,162 +13,214 @@
       --maxw:900px;
       font-family: "Noto Sans TC", "Helvetica Neue", Arial, sans-serif;
     }
-
-    body{
-      background:linear-gradient(180deg,var(--bg),#fff);
-      padding:24px;
-      display:flex;
-      justify-content:center;
-    }
-
+    body{background:linear-gradient(180deg,var(--bg),#fff);padding:24px;display:flex;justify-content:center;}
     .page{width:100%;max-width:var(--maxw);}
     .header{display:flex;align-items:center;gap:16px;margin-bottom:18px;}
     .brand{font-weight:800;color:#333;font-size:24px;}
     .tag{background:var(--accent);color:#fff;padding:6px 10px;border-radius:999px;font-size:13px;}
-
-    .card{
-      background:var(--card);
-      border-radius:12px;
-      padding:18px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.06);
-      margin-bottom:16px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:1fr 360px;
-      gap:18px;
-    }
-
-    .product-hero{
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-
-    /* 🎥 影片區塊 */
-    .video-box{
-      position:relative;
-      width:100%;
-      aspect-ratio:16 / 9;
-      border-radius:10px;
-      overflow:hidden;
-      box-shadow:0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    .video-box iframe{
-      width:100%;
-      height:100%;
-      border:none;
-    }
-
-    /* 🖼️ 輪播 */
+    .card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,0.06);margin-bottom:16px;}
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:18px;}
+    .product-hero{display:flex;flex-direction:column;gap:12px;}
     .carousel{position:relative;overflow:hidden;border-radius:10px;}
     .carousel-inner{display:flex;transition:transform 0.5s ease;}
     .carousel-inner img{width:100%;flex-shrink:0;border-radius:10px;}
-
-    .carousel button{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      background:rgba(111,168,255,0.6);
-      color:#fff;
-      border:none;
-      padding:8px 12px;
-      border-radius:50%;
-      cursor:pointer;
-      font-size:20px;
-    }
-
+    .carousel button{position:absolute;top:50%;transform:translateY(-50%);background:rgba(111,168,255,0.5);color:#fff;border:none;padding:8px 12px;border-radius:50%;cursor:pointer;font-size:20px;}
+    .carousel button:hover{background:rgba(111,168,255,0.8);}
     .prev{left:10px;}
     .next{right:10px;}
-
     .title{font-size:20px;font-weight:700;color:#222;}
-    .subtitle{color:var(--muted);line-height:1.6;margin-top:4px;}
+    .subtitle{color:var(--muted);margin-top:2px;line-height: 1.5;}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+    .meta .pill{background:#e6f0ff;border:1px solid rgba(111,168,255,0.3);padding:8px 10px;border-radius:8px;font-size:14px;color:#333;}
     .price{font-size:22px;color:#3366ff;font-weight:800;}
-    .btn{
-      display:inline-block;
-      background:var(--accent);
-      color:#fff;
-      padding:12px 18px;
-      border-radius:10px;
-      font-weight:700;
-      text-decoration:none;
+    .orig{font-size:14px;color:var(--muted);text-decoration:line-through;margin-left:8px;}
+    .btn{display:inline-block;background:var(--accent);color:white;padding:12px 18px;border-radius:10px;font-weight:700;text-decoration:none;box-shadow:0 6px 12px rgba(111,168,255,0.3);}
+    .small{font-size:13px;color:var(--muted);}
+    
+    /* 側邊欄的小表格樣式 */
+    .specs{margin-top:12px;}
+    table.spec{width:100%;border-collapse:collapse;margin-top:8px;}
+    table.spec td, table.spec th{padding:8px 6px;border-bottom:1px dashed #f0f0f0;color:#333;text-align:center;}
+    table.spec th{font-weight:700;}
+    
+    .note{font-size:13px;color:var(--muted);margin-top:8px;}
+    .secondary{background:#fff;border-radius:10px;padding:12px;margin-top:12px;}
+    .badge{display:inline-block;background:#e6f0ff;color:#3366ff;padding:6px 8px;border-radius:8px;border:1px solid rgba(111,168,255,0.3);font-weight:700;}
+    .footer{font-size:13px;color:var(--muted);margin-top:14px;text-align:center;}
+
+    /* --- 底部詳細尺寸表的專用樣式 --- */
+    .size-chart-container { width: 100%; margin-top: 15px; }
+    .size-title {
+      font-size: 16px; font-weight: bold; margin: 20px 0 10px 0; color: #222;
+      border-left: 4px solid #6fa8ff; /* 藍色裝飾線呼應海軍風 */
+      padding-left: 10px;
+    }
+    .size-table { width: 100%; border-collapse: collapse; font-size: 14px; text-align: center; margin-bottom: 10px; }
+    .size-table th { background-color: #f4f4f4; color: #333; padding: 10px; border: 1px solid #ddd; font-weight: bold; }
+    .size-table td { padding: 8px; border: 1px solid #ddd; color: #555; }
+    /* 讓表格在手機上可以橫向滑動，避免太擠 */
+    @media(max-width:500px){
+      .size-table { display: block; overflow-x: auto; white-space: nowrap; }
     }
 
     @media(max-width:880px){
-      .grid{grid-template-columns:1fr;}
+      .grid{grid-template-columns:1fr; }
+      .carousel-inner img{height:auto;}
     }
   </style>
 </head>
-
 <body>
-<div class="page">
+  <div class="page">
+    <div class="header">
+      <div class="brand">StarFit</div>
+      <div class="tag">TWICE子瑜平替</div>
+    </div>
 
-  <div class="header">
-    <div class="brand">StarFit</div>
-    <div class="tag">TWICE子瑜平替</div>
-  </div>
+    <div class="card grid">
+      <div class="product-hero">
+        <div class="carousel">
+          <button class="prev">&#10094;</button>
+          <div class="carousel-inner">
+	    <video src="intro.mp4"
+                 autoplay
+                 muted
+                 loop
+                 playsinline></video>
 
-  <div class="card grid">
+            <img src="https://i.postimg.cc/SsYnDYxC/suit1.jpg" alt="子瑜上身照">
+            <img src="https://i.postimg.cc/rpKswRxw/suit2.jpg" alt="針織套裝實拍">
+            <img src="https://i.postimg.cc/nzqHX4zM/suit4.jpg" alt="擺拍圖 1">
+            <img src="https://i.postimg.cc/yY1VNSz1/suit5.jpg" alt="擺拍圖 2">
+          </div>
+          <button class="next">&#10095;</button>
+        </div>
 
-    <div class="product-hero">
-
-      <!-- 🎥 商品影片（放在輪播前） -->
-      <div class="video-box">
-        <iframe
-          src="https://youtube.com/shorts/YiiV0UXqqW4?feature=share"
-          title="商品示範影片"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+        <div>
+          <div class="title">子瑜 機場穿搭 ・法式海軍風金釦船錨針織套裝</div>
+          <div class="subtitle">Twice 子瑜機場私服同款！穿出財閥千金般的優雅度假感，回頭率 100% 的初戀系套裝 ✨</div>
+          <div class="meta">
+            <div class="pill">⭐ 主打推薦</div>
+            <div class="pill">🔥 當季熱門</div>
+            <div class="pill">🚚 運費：滿額免運</div>
+          </div>
+        </div>
       </div>
 
-      <!-- 🖼️ 商品輪播 -->
-      <div class="carousel">
-        <button class="prev">&#10094;</button>
-        <div class="carousel-inner">
-          <img src="https://i.postimg.cc/SsYnDYxC/suit1.jpg">
-          <img src="https://i.postimg.cc/rpKswRxw/suit2.jpg">
-          <img src="https://i.postimg.cc/nzqHX4zM/suit4.jpg">
-          <img src="https://i.postimg.cc/yY1VNSz1/suit5.jpg">
-        </div>
-        <button class="next">&#10095;</button>
-      </div>
+      <aside>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <div class="price">NT$ 650</div>
+              <div class="orig">原價 NT$ 690</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="small">限時優惠</div>
+              <div class="badge">9.5 折｜滿額折 $50</div>
+            </div>
+          </div>
 
-      <div>
-        <div class="title">子瑜 機場穿搭・法式海軍風金釦針織套裝</div>
-        <div class="subtitle">
-          非公開示範影片＋實拍輪播，完整呈現上身效果。
+          <div class="specs">
+            <table class="spec">
+              <tr><td>商品狀態</td><td>現貨供應</td></tr>
+              <tr><td>配送</td><td>本島 3–5 個工作天</td></tr>
+              <tr><td>材質</td><td>針織 (棉 65% + 聚酯 35%)</td></tr>
+              <tr><td>顏色</td><td>奶油杏</td></tr>
+              <tr><td>尺寸</td><td>S / M / L / XL / 2XL</td></tr>
+            </table>
+          </div>
+
+          <div style="margin-top:12px;">
+            <a class="btn" href="#buy">加入購物車</a>
+            <div style="margin-top:8px;">
+              <a style="text-decoration:none;color:#666;font-weight:700;" href="#chat">聊聊客服</a> · <a style="text-decoration:none;color:#666;font-weight:700;" href="#faq">購買須知</a>
+            </div>
+          </div>
+
+          <div class="note">
+            <strong>預計出貨：</strong>現貨 2–3 天（工作日）<br>
+            <strong>退換貨：</strong>商品到貨 7 天內可提出退換（詳見購物須知）
+          </div>
         </div>
+
+        <div class="card secondary">
+          <div style="font-weight:800;margin-bottom:8px;">快速資訊</div>
+          <div class="small">· 穿上子瑜機場私服</div>
+          <div class="small">· 日常出門、約會、逛街聚會皆適合</div>
+          <div class="small">· 材質：小香風立體織紋針織</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="card">
+      <h3 style="margin:0 0 10px 0;">商品介紹 — 跟著子瑜穿出清新初戀感</h3>
+      <p style="color:var(--muted);margin:0 0 8px 0;line-height:1.6;">
+        還在煩惱換季怎麼穿嗎？這款讓韓網熱搜的「海軍風針織套裝」，就是妳本季衣櫥裡的解答。<br><br>
+        完美復刻了 Twice 子瑜的清新氣質，我們特別選用了帶有小香風質感的密織針織面料，米杏色基底搭配經典的紅藍撞色滾邊，瞬間提升整體的亮眼度。
+      </p>
+
+      <div class="size-chart-container">
+        
+        <div class="size-title">上衣尺寸表 (Top Size)</div>
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>尺寸</th><th>肩寬</th><th>胸寬</th><th>袖長</th><th>衣長</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>S</td><td>38</td><td>46</td><td>28</td><td>48</td></tr>
+            <tr><td>M</td><td>39</td><td>48</td><td>29</td><td>49</td></tr>
+            <tr><td>L</td><td>40</td><td>50</td><td>30</td><td>50</td></tr>
+            <tr><td>XL</td><td>41</td><td>52</td><td>31</td><td>51</td></tr>
+            <tr><td>2XL</td><td>42</td><td>54</td><td>32</td><td>52</td></tr>
+          </tbody>
+        </table>
+
+        <div class="size-title">裙子尺寸表 (Skirt Size)</div>
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>尺寸</th><th>腰寬 (高腰)</th><th>臀寬</th><th>下擺寬</th><th>裙長</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>S</td><td>32</td><td>44</td><td>48</td><td>40</td></tr>
+            <tr><td>M</td><td>34</td><td>46</td><td>50</td><td>41</td></tr>
+            <tr><td>L</td><td>36</td><td>48</td><td>52</td><td>42</td></tr>
+            <tr><td>XL</td><td>38</td><td>50</td><td>54</td><td>43</td></tr>
+            <tr><td>2XL</td><td>40</td><td>52</td><td>56</td><td>44</td></tr>
+          </tbody>
+        </table>
+
+        <div class="note">※ 尺寸為手工測量（單位 cm），可能略有 1-3cm 誤差，針織材質具有延展性。<br>※ 模特兒身高 163cm / 體重 45kg，穿著 S 號。</div>
       </div>
     </div>
 
-    <aside>
-      <div class="card">
-        <div class="price">NT$ 650</div>
-        <a class="btn" href="#">加入購物車</a>
-      </div>
-    </aside>
-
+    <div class="footer">
+      © 2025 StarFit • 本頁為示範商品頁面，可直接開啟於瀏覽器。
+    </div>
   </div>
-</div>
 
-<script>
-  const inner = document.querySelector('.carousel-inner');
-  const imgs = inner.querySelectorAll('img');
-  let idx = 0;
+  <script>
+    const carouselInner = document.querySelector('.carousel-inner');
+    const images = carouselInner.querySelectorAll('img');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let index = 0;
 
-  document.querySelector('.next').onclick = () => {
-    idx = (idx + 1) % imgs.length;
-    inner.style.transform = `translateX(-${idx * 100}%)`;
-  };
+    function showImage(i) {
+      carouselInner.style.transform = `translateX(-${i * 100}%)`;
+    }
 
-  document.querySelector('.prev').onclick = () => {
-    idx = (idx - 1 + imgs.length) % imgs.length;
-    inner.style.transform = `translateX(-${idx * 100}%)`;
-  };
-</script>
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + images.length) % images.length;
+      showImage(index);
+    });
 
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % images.length;
+      showImage(index);
+    });
+  </script>
 </body>
 </html>
