@@ -67,6 +67,36 @@
       .grid{grid-template-columns:1fr; }
       .carousel-inner img{height:auto;}
     }
+/* ===== 輪播圖片左右不被裁的修正 ===== */
+.carousel {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #f0f0f0;
+}
+
+.carousel-inner {
+  height: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide img,
+.slide iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 10px;
+}
+
   </style>
 </head>
 <body>
@@ -78,17 +108,54 @@
 
     <div class="card grid">
       <div class="product-hero">
-        <div class="carousel">
-          <button class="prev">&#10094;</button>
-          <div class="carousel-inner">
-	   
-            <img src="https://i.postimg.cc/SsYnDYxC/suit1.jpg" alt="子瑜上身照">
-            <img src="https://i.postimg.cc/rpKswRxw/suit2.jpg" alt="針織套裝實拍">
-            <img src="https://i.postimg.cc/nzqHX4zM/suit4.jpg" alt="擺拍圖 1">
-            <img src="https://i.postimg.cc/yY1VNSz1/suit5.jpg" alt="擺拍圖 2">
-          </div>
-          <button class="next">&#10095;</button>
-        </div>
+       <div class="carousel">
+  <button class="prev">&#10094;</button>
+  <div class="carousel-inner">
+    <div class="slide">
+     <iframe src="https://player.vimeo.com/video/1149007408?context=Vimeo%5CController%5CApi%5CResources%5CVideoController.&h=b4560ed1bc&s=b625e35f0a892cad00512ea80293ed154c25bb74_1766649919" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+    <div class="slide"><img src="https://i.postimg.cc/SsYnDYxC/suit1.jpg" alt=""></div>
+    <div class="slide"><img src="https://i.postimg.cc/rpKswRxw/suit2.jpg" alt=""></div>
+    <div class="slide"><img src="https://i.postimg.cc/nzqHX4zM/suit4.jpg" alt=""></div>
+    <div class="slide"><img src="https://i.postimg.cc/yY1VNSz1/suit5.jpg" alt=""></div>
+  </div>
+  <button class="next">&#10095;</button>
+</div>
+
+<style>
+.carousel-inner{display:flex;transition:transform .5s ease;}
+.slide{min-width:100%;flex-shrink:0;}
+.slide img,.slide iframe{
+  width:100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius:10px;
+}
+</style>
+
+
+<script>
+const carouselInner = document.querySelector('.carousel-inner');
+const slides = carouselInner.querySelectorAll('.slide');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+let index = 0;
+
+function showSlide(i){
+  carouselInner.style.transform = `translateX(-${i * 100}%)`;
+}
+
+prevBtn.onclick = () => {
+  index = (index - 1 + slides.length) % slides.length;
+  showSlide(index);
+};
+
+nextBtn.onclick = () => {
+  index = (index + 1) % slides.length;
+  showSlide(index);
+};
+</script>
+
 
         <div>
           <div class="title">子瑜 機場穿搭 ・法式海軍風金釦船錨針織套裝</div>
